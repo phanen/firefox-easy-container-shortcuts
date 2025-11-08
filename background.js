@@ -1,21 +1,19 @@
 browser.commands.onCommand.addListener(
-  () => browser.tabs.query({ currentWindow: true, active: true, status: 'complete' }).then((results) => {
+  () => browser.tabs.query({ highlighted: true }).then((results) => {
     if (!results || results.length < 1) {
       return;
     }
-
-    let currentTab = results[0];
-
-    if (currentTab.url.startsWith('about')) {
-      return;
-    }
-
-    browser.tabs.create({
-      cookieStoreId: currentTab.cookieStoreId == 'firefox-default' ? 'firefox-container-1' : 'firefox-default',
-      index: currentTab.index + 1,
-      url: currentTab.url,
-      pinned: currentTab.pinned,
+    results.forEach((tab) => {
+      if (tab.url.startsWith('about')) {
+        return;
+      }
+      browser.tabs.create({
+        cookieStoreId: tab.cookieStoreId == 'firefox-default' ? 'firefox-container-1' : 'firefox-default',
+        index: tab.index + 1,
+        url: tab.url,
+        pinned: tab.pinned,
+      });
+      browser.tabs.remove(tab.id);
     });
-    browser.tabs.remove(currentTab.id);
   })
 );
