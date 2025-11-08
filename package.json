@@ -1,0 +1,26 @@
+{
+  "name": "firefox-easy-container-shortcuts",
+  "version": "1.0.0",
+  "description": "Firefox 57+ extension that provides nine easy keyboard shortcuts to open new tabs on different containers.",
+  "homepage": "https://github.com/phanen/firefox-easy-container-shortcuts#readme",
+  "bugs": {
+    "url": "https://github.com/phanen/firefox-easy-container-shortcuts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phanen/firefox-easy-container-shortcuts.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-ext run --firefox=nightly --verbose --browser-console",
+    "pack": "web-ext build --overwrite-dest"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^143.0.0",
+    "web-ext": "^9.1.0"
+  }
+}

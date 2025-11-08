@@ -12,7 +12,9 @@ browser.commands.onCommand.addListener(
         index: tab.index + 1,
         url: tab.url,
         pinned: tab.pinned,
-      });
+      }).then((newtab) => {
+        browser.tabs.update(newtab.id, { highlighted: true });
+      })
       browser.tabs.remove(tab.id);
     });
   })
