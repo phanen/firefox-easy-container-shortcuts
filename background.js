@@ -1,5 +1,5 @@
 browser.commands.onCommand.addListener(
-  () => browser.tabs.query({ highlighted: true }).then((results) => {
+  () => browser.tabs.query({ highlighted: true, currentWindow: true }).then((results) => {
     if (!results || results.length < 1) {
       return;
     }
