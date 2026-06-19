@@ -76,7 +76,7 @@ jobs:
             > /tmp/amo-metadata.json
       - name: Upload build and source code
         working-directory: ${{ env.DIRECTORY }}
-        run: npx web-ext@9 sign --channel listed --amo-metadata /tmp/amo-metadata.json
+        run: npx web-ext@9 sign --channel listed --amo-metadata /tmp/amo-metadata.json --timeout=120
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
