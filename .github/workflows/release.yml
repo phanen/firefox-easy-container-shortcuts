@@ -65,7 +65,20 @@ jobs:
         with:
           path: ${{ env.DIRECTORY }}
       - name: Create release notes
-        run: echo "{\"version\":{\"license\":\"bsd3\",\"release_notes\":{\"en-US\":\"https://github.com/${{ github.repository }}/releases/tag/${{ needs.Version.outputs.version }}\"}}}" > /tmp/amo-metadata.json
+        run: |
+          cat > /tmp/amo-metadata.json <<EOF
+          {
+            "version": {
+              "custom_license": {
+                "name": "BSD 3-Clause License",
+                "url": "https://github.com/${{ github.repository }}/blob/master/LICENSE.md"
+              },
+              "release_notes": {
+                "en-US": "https://github.com/${{ github.repository }}/releases/tag/${{ needs.Version.outputs.version }}"
+              }
+            }
+          }
+          EOF
       - name: Upload build and source code
         working-directory: ${{ env.DIRECTORY }}
         run: npx web-ext@9 sign --channel listed --amo-metadata /tmp/amo-metadata.json
