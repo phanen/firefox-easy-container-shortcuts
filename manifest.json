@@ -11,11 +11,7 @@
   "icons": {
     "48": "assets/icon.svg"
   },
-  "permissions": [
-    "tabs",
-    "contextualIdentities",
-    "cookies"
-  ],
+  "permissions": [ "tabs", "cookies" ],
   "background": {
     "scripts": [
       "background.js"
