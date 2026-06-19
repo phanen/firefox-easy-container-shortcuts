@@ -5,17 +5,13 @@
   "description": "Toggle container",
   "applications": {
     "gecko": {
-      "id": "firefox.container-shortcuts@strategery.io"
+      "id": "373c14de-d37a-4472-9c2e-50f066e883ba"
     }
   },
   "icons": {
     "48": "assets/icon.svg"
   },
-  "permissions": [
-    "tabs",
-    "contextualIdentities",
-    "cookies"
-  ],
+  "permissions": [ "tabs", "cookies" ],
   "background": {
     "scripts": [
       "background.js"
