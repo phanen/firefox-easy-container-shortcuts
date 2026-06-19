@@ -62,6 +62,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v8
+        with:
+          path: ${{ env.DIRECTORY }}
       - name: Create release notes
         run: echo "{\"version\":{\"release_notes\":{\"en-US\":\"https://github.com/${{ github.repository }}/releases/tag/${{ needs.Version.outputs.version }}\"}}}" > /tmp/amo-metadata.json
       - name: Upload build and source code
