@@ -65,7 +65,7 @@ jobs:
         with:
           path: ${{ env.DIRECTORY }}
       - name: Create release notes
-        run: echo "{\"version\":{\"release_notes\":{\"en-US\":\"https://github.com/${{ github.repository }}/releases/tag/${{ needs.Version.outputs.version }}\"}}}" > /tmp/amo-metadata.json
+        run: echo "{\"version\":{\"license\":\"BSD-3-Clause\",\"release_notes\":{\"en-US\":\"https://github.com/${{ github.repository }}/releases/tag/${{ needs.Version.outputs.version }}\"}}}" > /tmp/amo-metadata.json
       - name: Upload build and source code
         working-directory: ${{ env.DIRECTORY }}
         run: npx web-ext@9 sign --channel listed --amo-metadata /tmp/amo-metadata.json
