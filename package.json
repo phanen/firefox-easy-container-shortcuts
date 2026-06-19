@@ -17,9 +17,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "web-ext run --firefox=nightly --verbose --browser-console",
-    "pack": "web-ext build --overwrite-dest"
+    "pack": "web-ext build --overwrite-dest",
+    "format": "biome format --write",
+    "format:check": "biome format"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.0",
     "@types/firefox-webext-browser": "^143.0.0",
     "web-ext": "^9.1.0"
   }
