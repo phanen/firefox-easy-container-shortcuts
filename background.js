@@ -1,5 +1,5 @@
-browser.commands.onCommand.addListener(
-  () => browser.tabs.query({ highlighted: true, currentWindow: true }).then((results) => {
+browser.commands.onCommand.addListener(() =>
+  browser.tabs.query({ highlighted: true, currentWindow: true }).then((results) => {
     if (!results || results.length < 1) {
       return;
     }
@@ -7,14 +7,17 @@ browser.commands.onCommand.addListener(
       if (tab.url.startsWith('about')) {
         return;
       }
-      browser.tabs.create({
-        cookieStoreId: tab.cookieStoreId == 'firefox-default' ? 'firefox-container-1' : 'firefox-default',
-        index: tab.index + 1,
-        url: tab.url,
-        pinned: tab.pinned,
-      }).then((newtab) => {
-        browser.tabs.update(newtab.id, { highlighted: true });
-      })
+      browser.tabs
+        .create({
+          cookieStoreId:
+            tab.cookieStoreId == 'firefox-default' ? 'firefox-container-1' : 'firefox-default',
+          index: tab.index + 1,
+          url: tab.url,
+          pinned: tab.pinned,
+        })
+        .then((newtab) => {
+          browser.tabs.update(newtab.id, { highlighted: true });
+        });
       browser.tabs.remove(tab.id);
     });
   })

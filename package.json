@@ -11,7 +11,7 @@
     "url": "git+https://github.com/phanen/firefox-easy-container-shortcuts.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "phanen",
   "type": "commonjs",
   "main": "background.js",
   "scripts": {
